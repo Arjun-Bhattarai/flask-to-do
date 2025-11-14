@@ -11,5 +11,10 @@ def helloworld():            #function banako
 def about():
     return 'aasari aarko page ma jana sakinxa '
 
+
+@first.route('/hello1')
+def hello1():
+    return render_template('hello1.html') #sab flask route la return garnu parxa!
+
 if __name__ == "__main__":        #execut garda nai code run hos ko lagi
     first.run(debug=True)        # error haru chai terminal mai dekhiyos
