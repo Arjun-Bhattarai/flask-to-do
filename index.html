@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}To-Do List{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+    <h2 class="text-center mb-4">Things-To-Do Form</h2>
+
+    <form style="max-width: 500px; margin: auto;" action="/" method="POST">
+        <div class="mb-3">
+            <label for="todo" class="form-label">Things to do</label>
+            <input type="text" class="form-control" name="title" id="todo" placeholder="Enter a task">
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" class="form-control" name="content" id="description" placeholder="Add some details">
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Done</button>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <h1>your-to-do-list</h1>
+        <tr>
+            <th scope="col">sno</th>
+            <th scope="col">title</th>
+            <th scope="col">content</th>
+            <th scope="col">date</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for to_do in allTodo %}
+        <tr>
+            <th>{{ loop.index }}</th>
+            <td>{{ to_do.title }}</td>
+            <td>{{ to_do.content }}</td>
+            <td>{{ to_do.date }}</td>
+            <td>
+                <a href="/update/{{ to_do.sno }}" class="btn btn-warning btn-sm">Update</a>
+                <a href="/delete/{{ to_do.sno }}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
